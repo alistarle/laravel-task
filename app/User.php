@@ -24,6 +24,26 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'pivot'
     ];
+
+    /**
+     * Return list of tasks binded to the user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function tasks()
+    {
+        return $this->belongsToMany('App\Models\Task');
+    }
+
+    /**
+     * Return list of device of the user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function devices()
+    {
+        return $this->hasMany('App\Models\Device');
+    }
 }

@@ -17,4 +17,16 @@ class UserController extends Controller
     {
         return User::all();
     }
+
+    /**
+     * Return list of task of the user
+     *
+     * @param User $user
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @internal param Request $request
+     */
+    public function tasks(User $user)
+    {
+        return $user->tasks;
+    }
 }

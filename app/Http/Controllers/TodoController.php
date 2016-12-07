@@ -16,7 +16,12 @@ class TodoController extends Controller
      */
     public function index(Request $request)
     {
-        $todos = Todo::with("tasks.users")->get();
+        if(isset($request->archived))
+            $todos = Todo::with("tasks.users")->get();
+        elseif(isset($request->onlyArchived))
+            $todos = Todo::with("tasks.users")->archived()->get();
+        else
+            $todos = Todo::with("tasks.users")->unarchived()->get();
 
         if($request->is('api/*'))
             return $todos;

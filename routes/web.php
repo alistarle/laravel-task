@@ -24,6 +24,7 @@ Route::post('todo/{todo}/task', 'TaskController@store');
 Route::group(['prefix' => 'api'], function () {
     Route::get('todos', 'TodoController@index');
     Route::get('users', 'UserController@index');
+    Route::get('user/{user}/tasks', 'UserController@tasks');
 
     Route::group(['prefix' => 'task'], function () {
         Route::delete('{task}', 'TaskController@delete');

@@ -38,7 +38,7 @@ class Task extends Model
 
     public function setFinishedAttribute($attribute)
     {
-        $this->attributes['finished'] = intval($attribute);
+        $this->attributes['finished'] = ($attribute == "true") ? 1 : 0;
     }
 
 }

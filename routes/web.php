@@ -34,6 +34,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::group(['prefix' => 'todo'], function () {
         Route::post('/', 'TodoController@store');
         Route::get('{todo}', 'TodoController@show');
+        Route::patch('{todo}', 'TodoController@update');
         Route::delete('{todo}', 'TodoController@delete');
         Route::post('{todo}/task', 'TaskController@store');
     });

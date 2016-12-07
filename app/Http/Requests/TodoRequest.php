@@ -25,10 +25,16 @@ class TodoRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|string|min:3',
-            'archived' => 'boolean'
-        ];
+        if($this->todo != null)
+            $rules = [
+                'name' => 'string|min:3',
+            ];
+        else
+            $rules = [
+                'name' => 'required|string|min:3',
+            ];
+
+        return $rules;
     }
 
     public function response(array $errors)

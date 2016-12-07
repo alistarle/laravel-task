@@ -62,6 +62,22 @@ class TodoController extends Controller
     }
 
     /**
+     * Update the given todo
+     *
+     * @param TodoRequest $request
+     * @param Todo $todo
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
+     */
+    public function update(TodoRequest $request, Todo $todo)
+    {
+        $todo->update($request->all());
+        if($request->is('api/*'))
+            return 'OK';
+        else
+            return view('blocs.todo',compact('todo'));
+    }
+
+    /**
      * Delete the given todo
      *
      * @param Request $request

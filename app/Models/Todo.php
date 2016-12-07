@@ -40,7 +40,7 @@ class Todo extends Model
 
     public function setArchivedAttribute($attribute)
     {
-        $this->attributes['archived'] = intval($attribute);
+        $this->attributes['archived'] = ($attribute == "true") ? 1 : 0;
     }
 
     /**
